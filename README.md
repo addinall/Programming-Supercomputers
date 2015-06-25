@@ -1,7 +1,7 @@
 #Master Class: Programming on Supercomputers
 ##Charles Stuart University
 ###Mark Addinall -  June 2015
-
+----
 In this  master class you will learn how to program and maintain parallel systems. 
 During the course you will have real time access to one of the world’s 
 fastest super computers where you will run simulations, develop statistical 
@@ -31,6 +31,8 @@ Some of the areas covered will include:
 - Issues with Cluster systems
 - The future of HPC and parallel programming
 
+The Lab work will mainly be based on code you will write, compile and configure using the C and C++ programming languages on the supercomputer accounts provided.
+----
 
 #Exam Week
 
