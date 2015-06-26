@@ -1,0 +1,272 @@
+HELLO_V1.CPP
+
+#include <omp.h>
+#include <iostream>
+
+using namespace std;
+
+void test_threads(){
+unsigned int t_count = 0;
+const unsigned int threads_max = omp_get_max_threads();
+
+#pragma omp parallel default(none) shared(t_count, threads_max, cout)
+{
+const unsigned int tid = omp_get_thread_num();
+#pragma omp critical
+{
+cout<<"Hello from thread id "<<tid<<endl;
+} 
+
+#pragma omp barrier
+#pragma omp master
+{
+t_count = omp_get_num_threads();
+cout<<"The number of threads is "<<t_count<<endl;
+cout<<"Maximum number of threads is "<<threads_max<<endl;
+cout<<"=========================="<<endl;
+}
+}
+}
+
+int main(int argc, const char *argv[]){
+#ifdef __MIC__
+cout<<"Running on Xeon Phi"<<endl;
+#else
+cout<<"Running on host"<<endl;
+#endif
+test_threads();
+
+return 0;
+}
+
+HELLO_V1.C
+
+/* Copyright (c) 2014 Craig Marin Elena <craigm.elena@gmail.com>
+The MIT License http://opensource.org/licenses/MIT*/
+#include <stdio.h>
+#include <omp.h>
+
+void testThreads();
+
+int main(int argc,char **argv)
+{ 
+testThreads();
+return 0;
+}
+
+void testThreads()
+{
+int tCount,threadsMax,tid; 
+#ifdef __MIC__
+printf("Running on Xeon Phi\n");
+#else
+printf("Running on host\n");
+#endif //__MIC__
+threadsMax=omp_get_max_threads();
+#pragma omp parallel default(none) private(tid) shared(tCount,threadsMax)
+{
+tid = omp_get_thread_num();
+#pragma omp critical
+printf("Hello from thread id %d\n",tid);
+#pragma omp barrier 
+#pragma omp master
+{
+tCount = omp_get_num_threads();
+printf("The number of threads is %d\n", tCount);
+printf("Maximum number of threads is %d\n", threadsMax);
+printf("================================\n");
+}
+}
+}
+
+HELLO_V2.C
+
+/* Copyright (c) 2014 Alin Marin Elena <alinm.elena@gmail.com>
+The MIT License http://opensource.org/licenses/MIT*/
+#include <stdio.h>
+#include <omp.h>
+
+#pragma omp declare target 
+void testThreads();
+#pragma omp end declare target 
+
+int main(int argc,char **argv)
+{ 
+int nCards; 
+nCards = omp_get_num_devices();
+printf("No of cards: %d\n",nCards);
+#pragma omp target 
+testThreads();
+testThreads();
+return 0;
+}
+
+void testThreads()
+{
+int tCount,threadsMax,tid; 
+#ifdef __MIC__
+printf("Running on Xeon Phi\n");
+#else
+printf("Running on host\n");
+#endif //__MIC__
+threadsMax=omp_get_max_threads();
+#pragma omp parallel default(none) private(tid) shared(tCount,threadsMax)
+{
+tid = omp_get_thread_num();
+#pragma omp critical
+printf("Hello from thread id %d\n",tid);
+#pragma omp barrier 
+#pragma omp master
+{
+tCount = omp_get_num_threads();
+printf("The number of threads is %d\n", tCount);
+printf("Maximum number of threads is %d\n", threadsMax);
+printf("================================\n");
+}
+}
+}
+
+HELLO_V3.C
+
+/* Copyright (c) 2014 Alin Marin Elena <alinm.elena@gmail.com>
+The MIT License http://opensource.org/licenses/MIT*/
+#include <stdio.h>
+#include <omp.h>
+
+#pragma omp declare target 
+void testThreads();
+#pragma omp end declare target 
+
+int main(int argc,char **argv)
+{ 
+int nCards;
+int card; 
+nCards = omp_get_num_devices();
+printf("No of cards: %d\n",nCards);
+for(card=0;card<nCards;++card)
+#pragma omp target device(card)
+testThreads();
+testThreads();
+return 0;
+}
+
+void testThreads()
+{
+int tCount,threadsMax,tid; 
+#ifdef __MIC__
+printf("Running on Xeon Phi\n");
+#else
+printf("Running on host\n");
+#endif //__MIC__
+threadsMax=omp_get_max_threads();
+#pragma omp parallel default(none) private(tid) shared(tCount,threadsMax)
+{
+tid = omp_get_thread_num();
+#pragma omp critical
+printf("Hello from thread id %d\n",tid);
+#pragma omp barrier 
+#pragma omp master
+{
+tCount = omp_get_num_threads();
+printf("The number of threads is %d\n", tCount);
+printf("Maximum number of threads is %d\n", threadsMax);
+printf("================================\n");
+}
+}
+}
+
+HELLO_V2.C
+
+/* Copyright (c) 2014 Alin Marin Elena <alinm.elena@gmail.com>
+The MIT License http://opensource.org/licenses/MIT*/
+#include <stdio.h>
+#include <omp.h>
+
+#pragma omp declare target 
+void testThreads();
+#pragma omp end declare target 
+
+int main(int argc,char **argv)
+{ 
+int nCards; 
+nCards = omp_get_num_devices();
+printf("No of cards: %d\n",nCards);
+#pragma omp target 
+testThreads();
+testThreads();
+return 0;
+}
+
+void testThreads()
+{
+int tCount,threadsMax,tid; 
+#ifdef __MIC__
+printf("Running on Xeon Phi\n");
+#else
+printf("Running on host\n");
+#endif //__MIC__
+threadsMax=omp_get_max_threads();
+#pragma omp parallel default(none) private(tid) shared(tCount,threadsMax)
+{
+tid = omp_get_thread_num();
+#pragma omp critical
+printf("Hello from thread id %d\n",tid);
+#pragma omp barrier 
+#pragma omp master
+{
+tCount = omp_get_num_threads();
+printf("The number of threads is %d\n", tCount);
+printf("Maximum number of threads is %d\n", threadsMax);
+printf("================================\n");
+}
+}
+}
+
+HELLO_V4.C
+
+/* Copyright (c) 2014 Alin Marin Elena <alinm.elena@gmail.com>
+The MIT License http://opensource.org/licenses/MIT*/
+#include <stdio.h>
+#include <omp.h>
+
+#pragma omp declare target 
+void testThreads();
+#pragma omp end declare target 
+
+int main(int argc,char **argv)
+{ 
+int nCards; 
+nCards = omp_get_num_devices();
+printf("No of cards: %d\n",nCards);
+#ifndef NOOFFLOAD 
+#pragma omp target 
+testThreads();
+#endif //NOOFFLOAD
+testThreads();
+return 0;
+}
+
+void testThreads()
+{
+int tCount,threadsMax,tid; 
+#ifdef __MIC__
+printf("Running on Xeon Phi\n");
+#else
+printf("Running on host\n");
+#endif //__MIC__
+threadsMax=omp_get_max_threads();
+#pragma omp parallel default(none) private(tid) shared(tCount,threadsMax)
+{
+tid = omp_get_thread_num();
+#pragma omp critical
+printf("Hello from thread id %d\n",tid);
+#pragma omp barrier 
+#pragma omp master
+{
+tCount = omp_get_num_threads();
+printf("The number of threads is %d\n", tCount);
+printf("Maximum number of threads is %d\n", threadsMax);
+printf("================================\n");
+}
+}
+}

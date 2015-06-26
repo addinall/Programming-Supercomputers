@@ -1,0 +1,128 @@
+<html>
+<head>
+<title>
+Intel&#174; Compilers code-coverage tool on-line help
+</title>
+<base target="src_view">
+</head>
+<body STYLE="color:black;font-weight:normal;
+font-family:Verdana,Arial;font-size:x-small" bgcolor="FFFFFF">
+<a target="_new" href="http://www.intel.com">
+<img src="__IntelR.gif" border="0"></a><BR>
+
+<h4 ALIGN="left" style="color:#3366ff">
+Welcome to Intel&#174; Compilers code-coverage tool.
+</h4>
+
+<p>
+Using the profile information gathered from running the 
+instrumented binaries on an application's tests, Intel&#174; 
+Compilers code-coverage tool creates HTML files that indicate 
+which portions of the source code were, or were not, exercised 
+by the tests. When applied to the profile of performance 
+work-loads, the coverage information indicates how well
+the training workload covers the application's critical code.
+
+<h5 ALIGN="left" style="color:#3366ff">Coloring Scheme</h5>
+
+<p>
+The tool distinguishes between the covered code,
+uncovered basic blocks, uncovered functions, and 
+partially-covered code. There are default colors that the tool 
+uses for highlighting the coverage information. These colors, 
+however, can be customized to be any valid HTML color when the 
+coverage tool is run to create the coverage report. For the 
+results of this particular run that you are browsing now, 
+the tool was configured with the following color settings. 
+</p>
+
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR>
+<IMG SRC="__Spacer.gif" WIDTH="15" HEIGHT="2"><TD BGCOLOR="#FF9900">
+<TABLE BORDER="0" CELLSPACING="1" CELLPADDING="4" 
+STYLE="font-family:Arial,Helvetica;font-size:x-small">
+
+<TR>
+<TD ALIGN="center" BGCOLOR="#F0F0F0" WIDTH="25%"><B>Color</B></TD>
+<TD ALIGN="center" BGCOLOR="#F0F0F0"><B>Meaning</B></TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="#ffffff">Covered code</TD>
+<TD BGCOLOR="#FFFFFF"> The portion of code colored in this color was 
+exercised by the tests.</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="#ffff99">Uncovered basic block</TD>
+<TD BGCOLOR="#FFFFFF"> Basic blocks that are colored in this color were 
+not exercised by any of the tests.<BR> They were, however, within 
+functions that were executed during the tests.</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="#ffcccc">Uncovered function</TD>
+<TD BGCOLOR="#FFFFFF"> Functions that are colored in this color were 
+never called during the tests.</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="#fafad2">Partially-covered code</TD>
+<TD BGCOLOR="#FFFFFF"> More than one basic block was generated for 
+the code at this position.<BR>
+Some of the blocks were covered while some were not.</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="#ffffff">Unknown</TD>
+<TD BGCOLOR="#FFFFFF"> No code was generated for this source position. 
+Most probably, the source at this position is either a comment, 
+a header-file inclusion, or a variable declaration.</TD>
+</TR>
+
+</TABLE>
+</TR>
+</TABLE>
+
+<h5 ALIGN="left" style="color:#3366ff">Dynamic Counters</h5>
+
+<p> 
+The coverage tool can be configured to generate the dynamic execution 
+counts in addition to the coloring scheme which highlights the coverage 
+information. The counts are displayed under the code after a 
+<B>^</B> sign precisely under the source 
+position where the corresponding basic block begins. If more than one 
+basic block is generated for the code at a source position 
+(e.g., for macros), then the total number of such blocks and the 
+number of the blocks that were executed are also displayed in front of 
+the execution count. For example, 
+^ 1000 (8/10) means that ten blocks 
+were generated for this position, however, only eight of them were 
+executed with a total execution count of 1000.
+</p>
+
+<h5 ALIGN="left" style="color:#3366ff">Coverage Summary</h5>
+
+<p>
+The coverage tool creates two kinds of coverage summary. The top level 
+summary reports the overall code coverage of the modules that were 
+selected. Note that the tool provides an option through which one can 
+select the modules of interest. The tool provides the list of all 
+selected modules with their corresponding coverage information. 
+The information includes the total number of functions and blocks in a 
+module and the portions that were covered. By clicking on the title of 
+columns in the reported tables, the lists may be sorted ascending or 
+descending based on block coverage, function coverage, or function name. 
+</p>
+
+<p>
+Similarly, within the individual module source views, the tool provides 
+the list of uncovered functions as well as the list of covered functions. 
+The lists are reported in two distinct frames that aid easy navigation 
+of the source code. The lists can be sorted based on the number of blocks 
+within uncovered functions and based on the block coverage in the case 
+of covered functions.  Moreover, the lists can be sorted based on the 
+function names.
+</p>
+
+</body>
+</html>
