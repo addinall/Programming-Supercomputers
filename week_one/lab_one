@@ -70,7 +70,7 @@ ld: warning: Cannot create .eh_frame_hdr section, --eh-frame-hdr ignored.
 ld: error in test1(.eh_frame); no .eh_frame_hdr table will be created.
 
 
-- explore vectorization reports
+1: Add compiler options to generate vectorization reports showing the loops that were or were not vectorized.
 
 Begin optimization report for: main(int, char **)
 
@@ -157,3 +157,12 @@ LOOP BEGIN at test1.c(39,4)
 LOOP END
 ===========================================================================
 
+
+
+2: Modify test1.c
+ include an internal routine (double) add_internal((double) a, (double(b)) which returns (a + b).  
+add another loop in the main program which calls add_internal() to perform the addition.
+Investigate which optimisation levels (O0, O1, O2, O3) inline add_internal.
+What effect does this have on the vectorization of this loop?
+Investigate compiler options and compiler directives to force inlining or 
+to inhibit inlining this call.

@@ -12,35 +12,64 @@
 //                We are working on Tulip, the fastest computer in
 //                Australia.
 //              
-//                This file is the initial lab file supplied by CSU/SGI 
+//                This file is the initial lab file supplied by CSU/SGI
+//                MODIFIED as per Lab1. Part 2.
+//                This is a test of compiler operands to see what
+//                happens to the call to the internal function
+//                add_internal at different optimisation levels.
+//
 // -------------------------------
 #define N 1000000
 
+double add_internal(double a, double b) {
+    return(a + b);
+}
+
+
 int main(int argc, char *argv[]){
-double sum, aa[N], bb[N], cc[N];
-int i;
-   printf("Hello World!\n");
 
-   for(i=0; i<N; i++){
-      aa[i] = (double) i;
-   }
-   for(i=0; i<N; i++){
-      bb[i] = (double) (2*i);
-   }
-   for(i=0; i<N; i++){
-      cc[i] = 1.0;
-   }
-   for(i=0; i<N; i++){
-      cc[i] = aa[i] + bb[i];
-   }
-   printf("cc = %f\n",cc[2]);
+    double sum, aa[N], bb[N], cc[N], dd[N];
+    int i;
 
-   sum = 0.0;
-   for(i=0; i<N; i++){
-      sum += cc[i];
-   }
-   printf("sum = %f\n",sum);
+    printf("Hello World!\n");
 
-   return 0;
+    for(i=0; i<N; i++){
+    aa[i] = (double) i;
+    }
+
+    for(i=0; i<N; i++){
+        bb[i] = (double) (2*i);
+    }
+
+    for(i=0; i<N; i++){
+        cc[i] = 1.0;
+    }
+
+    for(i=0; i<N; i++){
+        cc[i] = aa[i] + bb[i];
+    }
+
+    printf("cc = %f\n",cc[2]);
+    for (i=0; i<N; i++) {
+        dd[i] = add_internal((aa[i]*2), bb[i]);
+    }
+
+    sum = 0.0;
+
+    for(i=0; i<N; i++){
+        sum += cc[i];
+    }
+
+    printf("sum cc = %f\n",sum);
+
+    sum = 0.0;
+
+    for(i=0; i<N; i++){
+        sum += dd[i];
+    }
+
+    printf("sum dd = %f\n",sum);
+
+    return 0;
 }
 

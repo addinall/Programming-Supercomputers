@@ -1595,149 +1595,63 @@ extern void funlockfile (FILE *__stream) __attribute__ ((__nothrow__));
 
 
 
- 
 
 
 
 
 
- 
- 
-extern __inline int
-vprintf (__const char *__restrict __fmt, __gnuc_va_list __arg)
-{
-  return vfprintf (stdout, __fmt, __arg);
+
+
+
+double add_internal(double a, double b) {
+    return(a + b);
 }
-
- 
-extern __inline int
-getchar (void)
-{
-  return _IO_getc (stdin);
-}
-
-
- 
-extern __inline int
-fgetc_unlocked (FILE *__fp)
-{
-  return (__builtin_expect (((__fp)->_IO_read_ptr >= (__fp)->_IO_read_end), 0) ? __uflow (__fp) : *(unsigned char *) (__fp)->_IO_read_ptr++);
-}
-
-
- 
-extern __inline int
-getc_unlocked (FILE *__fp)
-{
-  return (__builtin_expect (((__fp)->_IO_read_ptr >= (__fp)->_IO_read_end), 0) ? __uflow (__fp) : *(unsigned char *) (__fp)->_IO_read_ptr++);
-}
-
- 
-extern __inline int
-getchar_unlocked (void)
-{
-  return (__builtin_expect (((stdin)->_IO_read_ptr >= (stdin)->_IO_read_end), 0) ? __uflow (stdin) : *(unsigned char *) (stdin)->_IO_read_ptr++);
-}
-
-
- 
-extern __inline int
-putchar (int __c)
-{
-  return _IO_putc (__c, stdout);
-}
-
-
- 
-extern __inline int
-fputc_unlocked (int __c, FILE *__stream)
-{
-  return (__builtin_expect (((__stream)->_IO_write_ptr >= (__stream)->_IO_write_end), 0) ? __overflow (__stream, (unsigned char) (__c)) : (unsigned char) (*(__stream)->_IO_write_ptr++ = (__c)));
-}
-
-
- 
-extern __inline int
-putc_unlocked (int __c, FILE *__stream)
-{
-  return (__builtin_expect (((__stream)->_IO_write_ptr >= (__stream)->_IO_write_end), 0) ? __overflow (__stream, (unsigned char) (__c)) : (unsigned char) (*(__stream)->_IO_write_ptr++ = (__c)));
-}
-
- 
-extern __inline int
-putchar_unlocked (int __c)
-{
-  return (__builtin_expect (((stdout)->_IO_write_ptr >= (stdout)->_IO_write_end), 0) ? __overflow (stdout, (unsigned char) (__c)) : (unsigned char) (*(stdout)->_IO_write_ptr++ = (__c)));
-}
-
-
-
-
- 
-extern __inline int
-__attribute__ ((__nothrow__)) feof_unlocked (FILE *__stream)
-{
-  return (((__stream)->_flags & 0x10) != 0);
-}
-
- 
-extern __inline int
-__attribute__ ((__nothrow__)) ferror_unlocked (FILE *__stream)
-{
-  return (((__stream)->_flags & 0x20) != 0);
-}
-
-
-
- 
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 int main(int argc, char *argv[]){
-double sum, aa[1000000], bb[1000000], cc[1000000];
-int i;
-   printf("Hello World!\n");
 
-   for(i=0; i<1000000; i++){
-      aa[i] = (double) i;
-   }
-   for(i=0; i<1000000; i++){
-      bb[i] = (double) (2*i);
-   }
-   for(i=0; i<1000000; i++){
-      cc[i] = 1.0;
-   }
-   for(i=0; i<1000000; i++){
-      cc[i] = aa[i] + bb[i];
-   }
-   printf("cc = %f\n",cc[2]);
+    double sum, aa[1000000], bb[1000000], cc[1000000], dd[1000000];
+    int i;
 
-   sum = 0.0;
-   for(i=0; i<1000000; i++){
-      sum += cc[i];
-   }
-   printf("sum = %f\n",sum);
+    printf("Hello World!\n");
 
-   return 0;
+    for(i=0; i<1000000; i++){
+    aa[i] = (double) i;
+    }
+
+    for(i=0; i<1000000; i++){
+        bb[i] = (double) (2*i);
+    }
+
+    for(i=0; i<1000000; i++){
+        cc[i] = 1.0;
+    }
+
+    for(i=0; i<1000000; i++){
+        cc[i] = aa[i] + bb[i];
+    }
+
+    printf("cc = %f\n",cc[2]);
+    for (i=0; i<1000000; i++) {
+        dd[i] = add_internal((aa[i]*2), bb[i]);
+    }
+
+    sum = 0.0;
+
+    for(i=0; i<1000000; i++){
+        sum += cc[i];
+    }
+
+    printf("sum cc = %f\n",sum);
+
+    sum = 0.0;
+
+    for(i=0; i<1000000; i++){
+        sum += dd[i];
+    }
+
+    printf("sum dd = %f\n",sum);
+
+    return 0;
 }
 
