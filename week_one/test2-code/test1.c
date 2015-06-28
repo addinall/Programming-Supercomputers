@@ -12,12 +12,11 @@
 //                We are working on Tulip, the fastest computer in
 //                Australia.
 //              
-//                This file is the initial lab file supplied by CSU/SGI
-//                MODIFIED as per Lab1. Part 3.
-//                Add an EXTERNAL routine to be linked as an .o object deck.
-//                This is a test of compiler operands to see what
-//                happens to the call to the internal function
-//                add_internal at different optimisation levels.
+//                This file is the final modification to our test
+//                suite.  Make the arrays two dimensional, and (I presume),
+//                the loops nested to see what effect the compiler
+//                options will have on the structure of our executable.
+//
 //
 // -------------------------------
 #define N 1000000

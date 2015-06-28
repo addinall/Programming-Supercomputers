@@ -1,12 +1,44 @@
 
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 230
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
 Begin optimization report for: main(int, char **)
 
-    Report from: Vector optimizations [vec]
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main(int, char **)) [1/2=50.0%] test1.c(29,33)
+  -> EXTERN: (34,5) printf(const char *__restrict__, ...)
+  -> EXTERN: (52,5) printf(const char *__restrict__, ...)
+  -> INLINE: (54,17) add_internal(double, double) (isz = 0) (sz = 7)
+  -> EXTERN: (63,5) printf(const char *__restrict__, ...)
+  -> EXTERN: (71,5) printf(const char *__restrict__, ...)
 
 
-LOOP BEGIN at test1.c(38,5)
-   remark #15388: vectorization support: reference aa has aligned access   [ test1.c(39,9) ]
-   remark #15412: vectorization support: streaming store was generated for aa.133   [ test1.c(39,9) ]
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at test1.c(36,5)
+   remark #15388: vectorization support: reference aa has aligned access   [ test1.c(37,5) ]
+   remark #15412: vectorization support: streaming store was generated for aa.132   [ test1.c(37,5) ]
    remark #15300: LOOP WAS VECTORIZED
    remark #15449: unmasked aligned unit stride stores: 1 
    remark #15467: unmasked aligned streaming stores: 1 
@@ -18,11 +50,12 @@ LOOP BEGIN at test1.c(38,5)
    remark #15480: medium-overhead vector operations: 1 
    remark #15487: type converts: 1 
    remark #15488: --- end vector loop cost summary ---
+   remark #25015: Estimate of max trip count of loop=500000
 LOOP END
 
-LOOP BEGIN at test1.c(42,5)
-   remark #15388: vectorization support: reference bb has aligned access   [ test1.c(43,9) ]
-   remark #15412: vectorization support: streaming store was generated for bb.133   [ test1.c(43,9) ]
+LOOP BEGIN at test1.c(40,5)
+   remark #15388: vectorization support: reference bb has aligned access   [ test1.c(41,9) ]
+   remark #15412: vectorization support: streaming store was generated for bb.132   [ test1.c(41,9) ]
    remark #15300: LOOP WAS VECTORIZED
    remark #15449: unmasked aligned unit stride stores: 1 
    remark #15467: unmasked aligned streaming stores: 1 
@@ -34,11 +67,12 @@ LOOP BEGIN at test1.c(42,5)
    remark #15480: medium-overhead vector operations: 1 
    remark #15487: type converts: 1 
    remark #15488: --- end vector loop cost summary ---
+   remark #25015: Estimate of max trip count of loop=500000
 LOOP END
 
-LOOP BEGIN at test1.c(46,5)
-   remark #15388: vectorization support: reference cc has aligned access   [ test1.c(47,9) ]
-   remark #15412: vectorization support: streaming store was generated for cc.133   [ test1.c(47,9) ]
+LOOP BEGIN at test1.c(44,5)
+   remark #15388: vectorization support: reference cc has aligned access   [ test1.c(45,9) ]
+   remark #15412: vectorization support: streaming store was generated for cc.132   [ test1.c(45,9) ]
    remark #15300: LOOP WAS VECTORIZED
    remark #15449: unmasked aligned unit stride stores: 1 
    remark #15467: unmasked aligned streaming stores: 1 
@@ -49,13 +83,14 @@ LOOP BEGIN at test1.c(46,5)
    remark #15479: lightweight vector operations: 2 
    remark #15480: medium-overhead vector operations: 1 
    remark #15488: --- end vector loop cost summary ---
+   remark #25015: Estimate of max trip count of loop=500000
 LOOP END
 
-LOOP BEGIN at test1.c(50,5)
-   remark #15388: vectorization support: reference cc has aligned access   [ test1.c(51,9) ]
-   remark #15388: vectorization support: reference aa has aligned access   [ test1.c(51,9) ]
-   remark #15388: vectorization support: reference bb has aligned access   [ test1.c(51,9) ]
-   remark #15412: vectorization support: streaming store was generated for cc.133   [ test1.c(51,9) ]
+LOOP BEGIN at test1.c(48,5)
+   remark #15388: vectorization support: reference cc has aligned access   [ test1.c(49,9) ]
+   remark #15388: vectorization support: reference aa has aligned access   [ test1.c(49,9) ]
+   remark #15388: vectorization support: reference bb has aligned access   [ test1.c(49,9) ]
+   remark #15412: vectorization support: streaming store was generated for cc.132   [ test1.c(49,9) ]
    remark #15300: LOOP WAS VECTORIZED
    remark #15448: unmasked aligned unit stride loads: 2 
    remark #15449: unmasked aligned unit stride stores: 1 
@@ -67,13 +102,14 @@ LOOP BEGIN at test1.c(50,5)
    remark #15479: lightweight vector operations: 4 
    remark #15480: medium-overhead vector operations: 1 
    remark #15488: --- end vector loop cost summary ---
+   remark #25015: Estimate of max trip count of loop=500000
 LOOP END
 
-LOOP BEGIN at test1.c(56,5)
-   remark #15388: vectorization support: reference dd has aligned access   [ test1.c(57,9) ]
-   remark #15388: vectorization support: reference aa has aligned access   [ test1.c(57,9) ]
-   remark #15388: vectorization support: reference bb has aligned access   [ test1.c(57,9) ]
-   remark #15412: vectorization support: streaming store was generated for dd.133   [ test1.c(57,9) ]
+LOOP BEGIN at test1.c(53,5)
+   remark #15388: vectorization support: reference dd has aligned access   [ test1.c(54,9) ]
+   remark #15388: vectorization support: reference aa has aligned access   [ test1.c(54,9) ]
+   remark #15388: vectorization support: reference bb has aligned access   [ test1.c(54,9) ]
+   remark #15412: vectorization support: streaming store was generated for dd.132   [ test1.c(54,9) ]
    remark #15300: LOOP WAS VECTORIZED
    remark #15448: unmasked aligned unit stride loads: 2 
    remark #15449: unmasked aligned unit stride stores: 1 
@@ -85,10 +121,11 @@ LOOP BEGIN at test1.c(56,5)
    remark #15479: lightweight vector operations: 6 
    remark #15480: medium-overhead vector operations: 1 
    remark #15488: --- end vector loop cost summary ---
+   remark #25015: Estimate of max trip count of loop=500000
 LOOP END
 
-LOOP BEGIN at test1.c(66,5)
-   remark #15388: vectorization support: reference cc has aligned access   [ test1.c(67,9) ]
+LOOP BEGIN at test1.c(59,5)
+   remark #15388: vectorization support: reference cc has aligned access   [ test1.c(60,9) ]
    remark #15399: vectorization support: unroll factor set to 8
    remark #15300: LOOP WAS VECTORIZED
    remark #15448: unmasked aligned unit stride loads: 1 
@@ -99,10 +136,11 @@ LOOP BEGIN at test1.c(66,5)
    remark #15479: lightweight vector operations: 4 
    remark #15480: medium-overhead vector operations: 1 
    remark #15488: --- end vector loop cost summary ---
+   remark #25015: Estimate of max trip count of loop=62500
 LOOP END
 
-LOOP BEGIN at test1.c(74,5)
-   remark #15388: vectorization support: reference dd has aligned access   [ test1.c(75,9) ]
+LOOP BEGIN at test1.c(67,5)
+   remark #15388: vectorization support: reference dd has aligned access   [ test1.c(68,9) ]
    remark #15399: vectorization support: unroll factor set to 8
    remark #15300: LOOP WAS VECTORIZED
    remark #15448: unmasked aligned unit stride loads: 1 
@@ -113,27 +151,14 @@ LOOP BEGIN at test1.c(74,5)
    remark #15479: lightweight vector operations: 4 
    remark #15480: medium-overhead vector operations: 1 
    remark #15488: --- end vector loop cost summary ---
+   remark #25015: Estimate of max trip count of loop=62500
 LOOP END
+===========================================================================
 
-LOOP BEGIN at test1.c(82,5)
-   remark #15388: vectorization support: reference ee has aligned access   [ test1.c(83,9) ]
-   remark #15399: vectorization support: unroll factor set to 8
-   remark #15300: LOOP WAS VECTORIZED
-   remark #15448: unmasked aligned unit stride loads: 1 
-   remark #15475: --- begin vector loop cost summary ---
-   remark #15476: scalar loop cost: 6 
-   remark #15477: vector loop cost: 2.500 
-   remark #15478: estimated potential speedup: 2.390 
-   remark #15479: lightweight vector operations: 4 
-   remark #15480: medium-overhead vector operations: 1 
-   remark #15488: --- end vector loop cost summary ---
-LOOP END
+Begin optimization report for: add_internal(double, double)
 
+    Report from: Interprocedural optimizations [ipo]
 
-Non-optimizable loops:
+INLINE REPORT: (add_internal(double, double)) [2/2=100.0%] test1.c(24,41)
 
-
-LOOP BEGIN at test1.c(60,5)
-   remark #15543: loop was not vectorized: loop with function call not considered an optimization candidate.   [ test1.c(61,17) ]
-LOOP END
 ===========================================================================

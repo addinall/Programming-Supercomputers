@@ -1,4 +1,4 @@
-CCFLAGS =
+CCFLAGS = -ipo 
 
 all: test1
 

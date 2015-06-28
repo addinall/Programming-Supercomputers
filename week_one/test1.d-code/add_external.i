@@ -1718,70 +1718,7 @@ __attribute__ ((__nothrow__)) ferror_unlocked (FILE *__stream)
 
 
 
-
-double add_internal(double a, double b) {
-    return(a + b);
-}
-
-double add_external(double a, double b);
-
-int main(int argc, char *argv[]){
-
-    double sum, aa[1000000], bb[1000000], cc[1000000], dd[1000000], ee[1000000];
-    int i;
-
-    printf("Hello World!\n");
-
-    for(i=0; i<1000000; i++){
-        aa[i] = (double) i;
+    double add_external(double a, double b) {
+        return a + b;
     }
-
-    for(i=0; i<1000000; i++){
-        bb[i] = (double) (2*i);
-    }
-
-    for(i=0; i<1000000; i++){
-        cc[i] = 1.0;
-    }
-
-    for(i=0; i<1000000; i++){
-        cc[i] = aa[i] + bb[i];
-    }
-
-    printf("cc = %f\n",cc[2]);
-
-    for (i=0; i<1000000; i++) {
-        dd[i] = add_internal((aa[i]*2), bb[i]);
-    }
-
-    for (i=0; i<1000000; i++) {
-        ee[i] = add_external((aa[i]*2), bb[i]/3);
-    }
-
-    sum = 0.0;
-
-    for(i=0; i<1000000; i++){
-        sum += cc[i];
-    }
-
-    printf("sum cc = %f\n",sum);
-
-    sum = 0.0;
-
-    for(i=0; i<1000000; i++){
-        sum += dd[i];
-    }
-
-    printf("sum dd = %f\n",sum);
-
-    sum = 0.0;
-
-    for(i=0; i<1000000; i++){
-        sum += ee[i];
-    }
-
-    printf("sum ee = %f\n",sum);
-
-    return 0;
-}
-
+   

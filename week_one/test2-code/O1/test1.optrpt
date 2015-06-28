@@ -1,0 +1,43 @@
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 230
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: add_internal(double, double)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (add_internal(double, double)) [1/2=50.0%] test1.c(24,41)
+
+===========================================================================
+
+Begin optimization report for: main(int, char **)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main(int, char **)) [2/2=100.0%] test1.c(29,33)
+  -> EXTERN: (34,5) printf(const char *__restrict__, ...)
+  -> EXTERN: (52,5) printf(const char *__restrict__, ...)
+  -> INLINE: (54,17) add_internal(double, double) (isz = 0) (sz = 7)
+  -> EXTERN: (63,5) printf(const char *__restrict__, ...)
+  -> EXTERN: (71,5) printf(const char *__restrict__, ...)
+
+===========================================================================

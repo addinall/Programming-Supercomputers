@@ -1,6 +1,6 @@
 # mark_description "Intel(R) C Intel(R) 64 Compiler XE for applications running on Intel(R) 64, Version 15.0.3.187 Build 2015040";
 # mark_description "7";
-# mark_description "-S";
+# mark_description "-O2 -S";
 	.file "test1.c"
 	.text
 ..TXTST0:
