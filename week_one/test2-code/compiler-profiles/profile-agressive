@@ -1,0 +1,234 @@
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 230
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: main(int, char **)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main(int, char **)) [1/2=50.0%] test2.c(35,33)
+  -> EXTERN: (40,5) printf(const char *__restrict__, ...)
+  -> EXTERN: (66,5) printf(const char *__restrict__, ...)
+  -> INLINE: (70,24) add_internal(double, double) (isz = 0) (sz = 7)
+  -> EXTERN: (76,24) add_external(double, double)
+  -> EXTERN: (88,5) printf(const char *__restrict__, ...)
+  -> EXTERN: (98,5) printf(const char *__restrict__, ...)
+  -> EXTERN: (108,5) printf(const char *__restrict__, ...)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at test2.c(42,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+   remark #25438: unrolled without remainder by 2  
+
+   LOOP BEGIN at test2.c(43,9)
+      remark #15388: vectorization support: reference aa has aligned access   [ test2.c(44,13) ]
+      remark #15427: loop was completely unrolled
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15475: --- begin vector loop cost summary ---
+      remark #15476: scalar loop cost: 4 
+      remark #15477: vector loop cost: 1.500 
+      remark #15478: estimated potential speedup: 1.600 
+      remark #15479: lightweight vector operations: 2 
+      remark #15480: medium-overhead vector operations: 1 
+      remark #15488: --- end vector loop cost summary ---
+   LOOP END
+LOOP END
+
+LOOP BEGIN at test2.c(48,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+   remark #25438: unrolled without remainder by 2  
+
+   LOOP BEGIN at test2.c(49,9)
+      remark #15388: vectorization support: reference bb has aligned access   [ test2.c(50,13) ]
+      remark #15427: loop was completely unrolled
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15475: --- begin vector loop cost summary ---
+      remark #15476: scalar loop cost: 5 
+      remark #15477: vector loop cost: 1.500 
+      remark #15478: estimated potential speedup: 2.000 
+      remark #15479: lightweight vector operations: 2 
+      remark #15480: medium-overhead vector operations: 1 
+      remark #15488: --- end vector loop cost summary ---
+   LOOP END
+LOOP END
+
+LOOP BEGIN at test2.c(54,5)
+   remark #25420: Collapsed with loop at line 55 
+   remark #15388: vectorization support: reference cc has aligned access   [ test2.c(56,13) ]
+   remark #15412: vectorization support: streaming store was generated for cc.133   [ test2.c(56,13) ]
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15467: unmasked aligned streaming stores: 1 
+   remark #15475: --- begin vector loop cost summary ---
+   remark #15476: scalar loop cost: 4 
+   remark #15477: vector loop cost: 1.500 
+   remark #15478: estimated potential speedup: 2.660 
+   remark #15479: lightweight vector operations: 2 
+   remark #15480: medium-overhead vector operations: 1 
+   remark #15488: --- end vector loop cost summary ---
+   remark #25015: Estimate of max trip count of loop=1000000
+
+   LOOP BEGIN at test2.c(55,9)
+      remark #25421: Loop eliminated in Collapsing 
+
+   LOOP END
+LOOP END
+
+LOOP BEGIN at test2.c(60,5)
+   remark #25420: Collapsed with loop at line 61 
+   remark #15388: vectorization support: reference cc has aligned access   [ test2.c(62,13) ]
+   remark #15388: vectorization support: reference aa has aligned access   [ test2.c(62,13) ]
+   remark #15388: vectorization support: reference bb has aligned access   [ test2.c(62,13) ]
+   remark #15412: vectorization support: streaming store was generated for cc.133   [ test2.c(62,13) ]
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15448: unmasked aligned unit stride loads: 2 
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15467: unmasked aligned streaming stores: 1 
+   remark #15475: --- begin vector loop cost summary ---
+   remark #15476: scalar loop cost: 6 
+   remark #15477: vector loop cost: 2.500 
+   remark #15478: estimated potential speedup: 2.400 
+   remark #15479: lightweight vector operations: 4 
+   remark #15480: medium-overhead vector operations: 1 
+   remark #15488: --- end vector loop cost summary ---
+   remark #25015: Estimate of max trip count of loop=1000000
+
+   LOOP BEGIN at test2.c(61,9)
+      remark #25421: Loop eliminated in Collapsing 
+
+   LOOP END
+LOOP END
+
+LOOP BEGIN at test2.c(68,5)
+   remark #25420: Collapsed with loop at line 69 
+   remark #15388: vectorization support: reference dd has aligned access   [ test2.c(70,13) ]
+   remark #15388: vectorization support: reference aa has aligned access   [ test2.c(70,13) ]
+   remark #15388: vectorization support: reference bb has aligned access   [ test2.c(70,13) ]
+   remark #15412: vectorization support: streaming store was generated for dd.133   [ test2.c(70,13) ]
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15448: unmasked aligned unit stride loads: 2 
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15467: unmasked aligned streaming stores: 1 
+   remark #15475: --- begin vector loop cost summary ---
+   remark #15476: scalar loop cost: 9 
+   remark #15477: vector loop cost: 4.000 
+   remark #15478: estimated potential speedup: 2.250 
+   remark #15479: lightweight vector operations: 6 
+   remark #15480: medium-overhead vector operations: 1 
+   remark #15488: --- end vector loop cost summary ---
+   remark #25015: Estimate of max trip count of loop=1000000
+
+   LOOP BEGIN at test2.c(69,9)
+      remark #25421: Loop eliminated in Collapsing 
+
+   LOOP END
+LOOP END
+
+LOOP BEGIN at test2.c(75,9)
+   remark #15382: vectorization support: call to function add_external(double, double) cannot be vectorized   [ test2.c(76,24) ]
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+LOOP END
+
+LOOP BEGIN at test2.c(82,5)
+   remark #25420: Collapsed with loop at line 83 
+   remark #15388: vectorization support: reference cc has aligned access   [ test2.c(84,13) ]
+   remark #15399: vectorization support: unroll factor set to 8
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15448: unmasked aligned unit stride loads: 1 
+   remark #15475: --- begin vector loop cost summary ---
+   remark #15476: scalar loop cost: 6 
+   remark #15477: vector loop cost: 2.500 
+   remark #15478: estimated potential speedup: 2.390 
+   remark #15479: lightweight vector operations: 4 
+   remark #15480: medium-overhead vector operations: 1 
+   remark #15488: --- end vector loop cost summary ---
+   remark #25015: Estimate of max trip count of loop=125000
+
+   LOOP BEGIN at test2.c(83,9)
+      remark #25421: Loop eliminated in Collapsing 
+
+   LOOP END
+LOOP END
+
+LOOP BEGIN at test2.c(92,5)
+   remark #25420: Collapsed with loop at line 93 
+   remark #15388: vectorization support: reference dd has aligned access   [ test2.c(94,13) ]
+   remark #15399: vectorization support: unroll factor set to 8
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15448: unmasked aligned unit stride loads: 1 
+   remark #15475: --- begin vector loop cost summary ---
+   remark #15476: scalar loop cost: 6 
+   remark #15477: vector loop cost: 2.500 
+   remark #15478: estimated potential speedup: 2.390 
+   remark #15479: lightweight vector operations: 4 
+   remark #15480: medium-overhead vector operations: 1 
+   remark #15488: --- end vector loop cost summary ---
+   remark #25015: Estimate of max trip count of loop=125000
+
+   LOOP BEGIN at test2.c(93,9)
+      remark #25421: Loop eliminated in Collapsing 
+
+   LOOP END
+LOOP END
+
+LOOP BEGIN at test2.c(102,5)
+   remark #25420: Collapsed with loop at line 103 
+   remark #15388: vectorization support: reference ee has aligned access   [ test2.c(104,13) ]
+   remark #15399: vectorization support: unroll factor set to 8
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15448: unmasked aligned unit stride loads: 1 
+   remark #15475: --- begin vector loop cost summary ---
+   remark #15476: scalar loop cost: 6 
+   remark #15477: vector loop cost: 2.500 
+   remark #15478: estimated potential speedup: 2.390 
+   remark #15479: lightweight vector operations: 4 
+   remark #15480: medium-overhead vector operations: 1 
+   remark #15488: --- end vector loop cost summary ---
+   remark #25015: Estimate of max trip count of loop=125000
+
+   LOOP BEGIN at test2.c(103,9)
+      remark #25421: Loop eliminated in Collapsing 
+
+   LOOP END
+LOOP END
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at test2.c(74,5)
+   remark #15543: loop was not vectorized: loop with function call not considered an optimization candidate.   [ test2.c(76,24) ]
+LOOP END
+===========================================================================
+
+Begin optimization report for: add_internal(double, double)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (add_internal(double, double)) [2/2=100.0%] test2.c(29,41)
+
+===========================================================================

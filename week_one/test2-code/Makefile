@@ -1,4 +1,4 @@
-CCFLAGS = -ipo
+CCFLAGS = -unroll-agressive
 
 all: test2
 
