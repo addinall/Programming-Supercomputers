@@ -126,39 +126,36 @@ main:
         mfence                                                  #68.5
                                 # LOE rbx r12 r13 r14 r15
 ..B1.16:                        # Preds ..B1.15
-        lea       16(%rsp), %rdi                                #74.10
-        lea       32000016(%rsp), %rax                          #74.10
         movq      %r12, 80000016(%rsp)                          #74.10
-        xorl      %ecx, %ecx                                    #74.10
+        lea       16(%rsp), %rdi                                #74.10
         movq      %r13, 80000024(%rsp)                          #74.10
-        xorl      %edx, %edx                                    #74.10
+        xorl      %ecx, %ecx                                    #74.10
         movq      %r14, 80000032(%rsp)                          #74.10
-        lea       48000016(%rsp), %rsi                          #74.10
+        xorl      %edx, %edx                                    #74.10
         movq      %r15, 80000040(%rsp)                          #74.10
+        lea       32000016(%rsp), %rax                          #74.10
+        movq      %rbx, 80000048(%rsp)                          #74.10
+        lea       48000016(%rsp), %rsi                          #74.10
 ..___tag_value_main.8:                                          #
         movq      %rdi, %r14                                    #74.10
-        movq      %rbx, 80000048(%rsp)                          #74.10
-..___tag_value_main.12:                                         #
                                 # LOE rax rdx rsi r14 ecx
 ..B1.17:                        # Preds ..B1.20 ..B1.16
-        movq      %rdx, 8(%rsp)                                 #76.37
+        movq      %rdx, 8(%rsp)                                 #88.37
         xorl      %r13d, %r13d                                  #75.13
-        movl      %ecx, (%rsp)                                  #76.37
-        lea       (%rax,%rdx), %rbx                             #76.37
-        lea       (%rsi,%rdx), %r12                             #76.37
-        lea       (%r14,%rdx), %r15                             #76.37
+        movl      %ecx, (%rsp)                                  #88.37
+        lea       (%rax,%rdx), %rbx                             #88.37
+        lea       (%rsi,%rdx), %r12                             #88.37
+        lea       (%r14,%rdx), %r15                             #88.37
                                 # LOE rbx r12 r13 r14 r15
 ..B1.18:                        # Preds ..B1.19 ..B1.17
-        movsd     (%r12,%r13,8), %xmm1                          #76.24
-        divsd     .L_2il0floatpacket.3(%rip), %xmm1             #76.24
-        movsd     (%rbx,%r13,8), %xmm0                          #76.24
-        mulsd     .L_2il0floatpacket.2(%rip), %xmm0             #76.24
-..___tag_value_main.13:                                         #76.24
-        call      add_external                                  #76.24
+        movsd     (%rbx,%r13,8), %xmm0                          #88.24
+        movsd     (%r12,%r13,8), %xmm1                          #88.24
+..___tag_value_main.13:                                         #88.24
+        call      add_external                                  #88.24
 ..___tag_value_main.14:                                         #
                                 # LOE rbx r12 r13 r14 r15 xmm0
 ..B1.19:                        # Preds ..B1.18
-        movsd     %xmm0, (%r15,%r13,8)                          #76.13
+        movsd     %xmm0, (%r15,%r13,8)                          #88.13
         incq      %r13                                          #75.23
         cmpq      $2, %r13                                      #75.20
         jl        ..B1.18       # Prob 50%                      #75.20
@@ -176,107 +173,107 @@ main:
 ..B1.21:                        # Preds ..B1.20
         movq      80000016(%rsp), %r12                          #
 ..___tag_value_main.15:                                         #
-        xorl      %eax, %eax                                    #82.5
-        pxor      %xmm1, %xmm1                                  #84.13
+        xorl      %eax, %eax                                    #94.5
+        pxor      %xmm1, %xmm1                                  #96.13
         movq      80000024(%rsp), %r13                          #
 ..___tag_value_main.16:                                         #
-        movaps    %xmm1, %xmm8                                  #84.13
+        movaps    %xmm1, %xmm8                                  #96.13
         movq      80000032(%rsp), %r14                          #
 ..___tag_value_main.17:                                         #
-        movaps    %xmm1, %xmm7                                  #84.13
+        movaps    %xmm1, %xmm7                                  #96.13
         movq      80000040(%rsp), %r15                          #
 ..___tag_value_main.18:                                         #
-        movaps    %xmm1, %xmm6                                  #84.13
+        movaps    %xmm1, %xmm6                                  #96.13
         movq      80000048(%rsp), %rbx                          #
 ..___tag_value_main.19:                                         #
-        movaps    %xmm1, %xmm5                                  #84.13
-        movaps    %xmm1, %xmm4                                  #84.13
-        movaps    %xmm1, %xmm3                                  #84.13
-        movaps    %xmm1, %xmm2                                  #84.13
-        movaps    %xmm1, %xmm0                                  #84.13
+        movaps    %xmm1, %xmm5                                  #96.13
+        movaps    %xmm1, %xmm4                                  #96.13
+        movaps    %xmm1, %xmm3                                  #96.13
+        movaps    %xmm1, %xmm2                                  #96.13
+        movaps    %xmm1, %xmm0                                  #96.13
 ..___tag_value_main.20:                                         #
         .align    16,0x90
                                 # LOE rax rbx r12 r13 r14 r15 xmm0 xmm1 xmm2 xmm3 xmm4 xmm5 xmm6 xmm7 xmm8
 ..B1.22:                        # Preds ..B1.22 ..B1.21
-        addpd     64000016(%rsp,%rax,8), %xmm8                  #84.13
-        addpd     64000032(%rsp,%rax,8), %xmm7                  #84.13
-        addpd     64000048(%rsp,%rax,8), %xmm6                  #84.13
-        addpd     64000064(%rsp,%rax,8), %xmm5                  #84.13
-        addpd     64000080(%rsp,%rax,8), %xmm4                  #84.13
-        addpd     64000096(%rsp,%rax,8), %xmm3                  #84.13
-        addpd     64000112(%rsp,%rax,8), %xmm2                  #84.13
-        addpd     64000128(%rsp,%rax,8), %xmm0                  #84.13
-        addq      $16, %rax                                     #82.5
-        cmpq      $2000000, %rax                                #82.5
-        jb        ..B1.22       # Prob 99%                      #82.5
+        addpd     64000016(%rsp,%rax,8), %xmm8                  #96.13
+        addpd     64000032(%rsp,%rax,8), %xmm7                  #96.13
+        addpd     64000048(%rsp,%rax,8), %xmm6                  #96.13
+        addpd     64000064(%rsp,%rax,8), %xmm5                  #96.13
+        addpd     64000080(%rsp,%rax,8), %xmm4                  #96.13
+        addpd     64000096(%rsp,%rax,8), %xmm3                  #96.13
+        addpd     64000112(%rsp,%rax,8), %xmm2                  #96.13
+        addpd     64000128(%rsp,%rax,8), %xmm0                  #96.13
+        addq      $16, %rax                                     #94.5
+        cmpq      $2000000, %rax                                #94.5
+        jb        ..B1.22       # Prob 99%                      #94.5
                                 # LOE rax rbx r12 r13 r14 r15 xmm0 xmm1 xmm2 xmm3 xmm4 xmm5 xmm6 xmm7 xmm8
 ..B1.23:                        # Preds ..B1.22
-        addpd     %xmm7, %xmm8                                  #84.13
-        addpd     %xmm5, %xmm6                                  #84.13
-        addpd     %xmm3, %xmm4                                  #84.13
-        addpd     %xmm0, %xmm2                                  #84.13
-        addpd     %xmm6, %xmm8                                  #84.13
-        addpd     %xmm2, %xmm4                                  #84.13
-        addpd     %xmm4, %xmm8                                  #84.13
-        movaps    %xmm8, %xmm2                                  #84.13
-        movl      $.L_2__STRING.2, %edi                         #88.5
-        unpckhpd  %xmm8, %xmm2                                  #84.13
-        movl      $1, %eax                                      #88.5
-        movaps    %xmm1, (%rsp)                                 #88.5
-        addsd     %xmm2, %xmm8                                  #84.13
-        movaps    %xmm8, %xmm0                                  #88.5
-..___tag_value_main.25:                                         #88.5
-        call      printf                                        #88.5
+        addpd     %xmm7, %xmm8                                  #96.13
+        addpd     %xmm5, %xmm6                                  #96.13
+        addpd     %xmm3, %xmm4                                  #96.13
+        addpd     %xmm0, %xmm2                                  #96.13
+        addpd     %xmm6, %xmm8                                  #96.13
+        addpd     %xmm2, %xmm4                                  #96.13
+        addpd     %xmm4, %xmm8                                  #96.13
+        movaps    %xmm8, %xmm2                                  #96.13
+        movl      $.L_2__STRING.2, %edi                         #100.5
+        unpckhpd  %xmm8, %xmm2                                  #96.13
+        movl      $1, %eax                                      #100.5
+        movaps    %xmm1, (%rsp)                                 #100.5
+        addsd     %xmm2, %xmm8                                  #96.13
+        movaps    %xmm8, %xmm0                                  #100.5
+..___tag_value_main.25:                                         #100.5
+        call      printf                                        #100.5
 ..___tag_value_main.26:                                         #
                                 # LOE rbx r12 r13 r14 r15
 ..B1.24:                        # Preds ..B1.23
         movaps    (%rsp), %xmm1                                 #
-        xorl      %eax, %eax                                    #92.5
-        pxor      %xmm8, %xmm8                                  #94.13
-        movaps    %xmm1, %xmm7                                  #94.13
-        movaps    %xmm1, %xmm6                                  #94.13
-        movaps    %xmm1, %xmm5                                  #94.13
-        movaps    %xmm1, %xmm4                                  #94.13
-        movaps    %xmm1, %xmm3                                  #94.13
-        movaps    %xmm1, %xmm2                                  #94.13
-        movaps    %xmm1, %xmm0                                  #94.13
+        xorl      %eax, %eax                                    #104.5
+        pxor      %xmm8, %xmm8                                  #106.13
+        movaps    %xmm1, %xmm7                                  #106.13
+        movaps    %xmm1, %xmm6                                  #106.13
+        movaps    %xmm1, %xmm5                                  #106.13
+        movaps    %xmm1, %xmm4                                  #106.13
+        movaps    %xmm1, %xmm3                                  #106.13
+        movaps    %xmm1, %xmm2                                  #106.13
+        movaps    %xmm1, %xmm0                                  #106.13
         .align    16,0x90
                                 # LOE rax rbx r12 r13 r14 r15 xmm0 xmm1 xmm2 xmm3 xmm4 xmm5 xmm6 xmm7 xmm8
 ..B1.25:                        # Preds ..B1.25 ..B1.24
-        addpd     16000016(%rsp,%rax,8), %xmm8                  #94.13
-        addpd     16000032(%rsp,%rax,8), %xmm7                  #94.13
-        addpd     16000048(%rsp,%rax,8), %xmm6                  #94.13
-        addpd     16000064(%rsp,%rax,8), %xmm5                  #94.13
-        addpd     16000080(%rsp,%rax,8), %xmm4                  #94.13
-        addpd     16000096(%rsp,%rax,8), %xmm3                  #94.13
-        addpd     16000112(%rsp,%rax,8), %xmm2                  #94.13
-        addpd     16000128(%rsp,%rax,8), %xmm0                  #94.13
-        addq      $16, %rax                                     #92.5
-        cmpq      $2000000, %rax                                #92.5
-        jb        ..B1.25       # Prob 99%                      #92.5
+        addpd     16000016(%rsp,%rax,8), %xmm8                  #106.13
+        addpd     16000032(%rsp,%rax,8), %xmm7                  #106.13
+        addpd     16000048(%rsp,%rax,8), %xmm6                  #106.13
+        addpd     16000064(%rsp,%rax,8), %xmm5                  #106.13
+        addpd     16000080(%rsp,%rax,8), %xmm4                  #106.13
+        addpd     16000096(%rsp,%rax,8), %xmm3                  #106.13
+        addpd     16000112(%rsp,%rax,8), %xmm2                  #106.13
+        addpd     16000128(%rsp,%rax,8), %xmm0                  #106.13
+        addq      $16, %rax                                     #104.5
+        cmpq      $2000000, %rax                                #104.5
+        jb        ..B1.25       # Prob 99%                      #104.5
                                 # LOE rax rbx r12 r13 r14 r15 xmm0 xmm1 xmm2 xmm3 xmm4 xmm5 xmm6 xmm7 xmm8
 ..B1.26:                        # Preds ..B1.25
-        addpd     %xmm7, %xmm8                                  #94.13
-        addpd     %xmm5, %xmm6                                  #94.13
-        addpd     %xmm3, %xmm4                                  #94.13
-        addpd     %xmm0, %xmm2                                  #94.13
-        addpd     %xmm6, %xmm8                                  #94.13
-        addpd     %xmm2, %xmm4                                  #94.13
-        addpd     %xmm4, %xmm8                                  #94.13
-        movaps    %xmm8, %xmm2                                  #94.13
-        movl      $.L_2__STRING.3, %edi                         #98.5
-        unpckhpd  %xmm8, %xmm2                                  #94.13
-        movl      $1, %eax                                      #98.5
-        movaps    %xmm1, (%rsp)                                 #98.5
-        addsd     %xmm2, %xmm8                                  #94.13
-        movaps    %xmm8, %xmm0                                  #98.5
-..___tag_value_main.27:                                         #98.5
-        call      printf                                        #98.5
+        addpd     %xmm7, %xmm8                                  #106.13
+        addpd     %xmm5, %xmm6                                  #106.13
+        addpd     %xmm3, %xmm4                                  #106.13
+        addpd     %xmm0, %xmm2                                  #106.13
+        addpd     %xmm6, %xmm8                                  #106.13
+        addpd     %xmm2, %xmm4                                  #106.13
+        addpd     %xmm4, %xmm8                                  #106.13
+        movaps    %xmm8, %xmm2                                  #106.13
+        movl      $.L_2__STRING.3, %edi                         #110.5
+        unpckhpd  %xmm8, %xmm2                                  #106.13
+        movl      $1, %eax                                      #110.5
+        movaps    %xmm1, (%rsp)                                 #110.5
+        addsd     %xmm2, %xmm8                                  #106.13
+        movaps    %xmm8, %xmm0                                  #110.5
+..___tag_value_main.27:                                         #110.5
+        call      printf                                        #110.5
 ..___tag_value_main.28:                                         #
                                 # LOE rbx r12 r13 r14 r15
 ..B1.27:                        # Preds ..B1.26
         movaps    (%rsp), %xmm1                                 #
-        xorl      %eax, %eax                                    #102.5
+        xorl      %eax, %eax                                    #114.5
         pxor      %xmm7, %xmm7                                  #37.5
         movaps    %xmm1, %xmm6                                  #37.5
         movaps    %xmm1, %xmm5                                  #37.5
@@ -286,17 +283,17 @@ main:
         movaps    %xmm1, %xmm0                                  #37.5
                                 # LOE rax rbx r12 r13 r14 r15 xmm0 xmm1 xmm2 xmm3 xmm4 xmm5 xmm6 xmm7
 ..B1.28:                        # Preds ..B1.28 ..B1.27
-        addpd     16(%rsp,%rax,8), %xmm1                        #104.13
-        addpd     32(%rsp,%rax,8), %xmm7                        #104.13
-        addpd     48(%rsp,%rax,8), %xmm6                        #104.13
-        addpd     64(%rsp,%rax,8), %xmm5                        #104.13
-        addpd     80(%rsp,%rax,8), %xmm4                        #104.13
-        addpd     96(%rsp,%rax,8), %xmm3                        #104.13
-        addpd     112(%rsp,%rax,8), %xmm2                       #104.13
-        addpd     128(%rsp,%rax,8), %xmm0                       #104.13
-        addq      $16, %rax                                     #102.5
-        cmpq      $2000000, %rax                                #102.5
-        jb        ..B1.28       # Prob 99%                      #102.5
+        addpd     16(%rsp,%rax,8), %xmm1                        #116.13
+        addpd     32(%rsp,%rax,8), %xmm7                        #116.13
+        addpd     48(%rsp,%rax,8), %xmm6                        #116.13
+        addpd     64(%rsp,%rax,8), %xmm5                        #116.13
+        addpd     80(%rsp,%rax,8), %xmm4                        #116.13
+        addpd     96(%rsp,%rax,8), %xmm3                        #116.13
+        addpd     112(%rsp,%rax,8), %xmm2                       #116.13
+        addpd     128(%rsp,%rax,8), %xmm0                       #116.13
+        addq      $16, %rax                                     #114.5
+        cmpq      $2000000, %rax                                #114.5
+        jb        ..B1.28       # Prob 99%                      #114.5
                                 # LOE rax rbx r12 r13 r14 r15 xmm0 xmm1 xmm2 xmm3 xmm4 xmm5 xmm6 xmm7
 ..B1.29:                        # Preds ..B1.28
         addpd     %xmm7, %xmm1                                  #37.5
@@ -307,21 +304,21 @@ main:
         addpd     %xmm2, %xmm4                                  #37.5
         addpd     %xmm4, %xmm1                                  #37.5
         movaps    %xmm1, %xmm0                                  #37.5
-        movl      $.L_2__STRING.4, %edi                         #108.5
+        movl      $.L_2__STRING.4, %edi                         #120.5
         unpckhpd  %xmm1, %xmm0                                  #37.5
-        movl      $1, %eax                                      #108.5
+        movl      $1, %eax                                      #120.5
         addsd     %xmm0, %xmm1                                  #37.5
-        movaps    %xmm1, %xmm0                                  #108.5
-..___tag_value_main.29:                                         #108.5
-        call      printf                                        #108.5
+        movaps    %xmm1, %xmm0                                  #120.5
+..___tag_value_main.29:                                         #120.5
+        call      printf                                        #120.5
 ..___tag_value_main.30:                                         #
                                 # LOE rbx r12 r13 r14 r15
 ..B1.30:                        # Preds ..B1.29
-        xorl      %eax, %eax                                    #110.12
-        movq      %rbp, %rsp                                    #110.12
-        popq      %rbp                                          #110.12
+        xorl      %eax, %eax                                    #122.12
+        movq      %rbp, %rsp                                    #122.12
+        popq      %rbp                                          #122.12
 ..___tag_value_main.31:                                         #
-        ret                                                     #110.12
+        ret                                                     #122.12
         .align    16,0x90
 ..___tag_value_main.33:                                         #
                                 # LOE
@@ -373,16 +370,6 @@ add_internal:
 	.long	0x00000000,0x40000000,0x00000000,0x40000000
 	.type	.L_2il0floatpacket.1,@object
 	.size	.L_2il0floatpacket.1,16
-	.align 8
-.L_2il0floatpacket.2:
-	.long	0x00000000,0x40000000
-	.type	.L_2il0floatpacket.2,@object
-	.size	.L_2il0floatpacket.2,8
-	.align 8
-.L_2il0floatpacket.3:
-	.long	0x00000000,0x40080000
-	.type	.L_2il0floatpacket.3,@object
-	.size	.L_2il0floatpacket.3,8
 	.section .rodata.str1.4, "aMS",@progbits,1
 	.space 3, 0x00 	# pad
 	.align 4
@@ -429,7 +416,7 @@ add_internal:
 	.8byte 0x7801000100000000
 	.8byte 0x0000019008070c10
 	.4byte 0x00000000
-	.4byte 0x0000010c
+	.4byte 0x00000104
 	.4byte 0x0000001c
 	.8byte ..___tag_value_main.1
 	.8byte ..___tag_value_main.33-..___tag_value_main.1
@@ -441,21 +428,19 @@ add_internal:
 	.4byte 0x8610060c
 	.2byte 0x0402
 	.4byte ..___tag_value_main.8-..___tag_value_main.4
-	.8byte 0xff800d1c380e0c10
-	.8byte 0xffffff900d1affff
-	.8byte 0x800d1c380e0d1022
-	.8byte 0xffff980d1affffff
-	.8byte 0x0d1c380e0e1022ff
-	.8byte 0xffa00d1affffff80
-	.8byte 0x1c380e0f1022ffff
-	.8byte 0xa80d1affffff800d
-	.4byte 0x22ffffff
-	.byte 0x04
-	.4byte ..___tag_value_main.12-..___tag_value_main.8
 	.8byte 0xff800d1c380e0310
 	.8byte 0xffffffb00d1affff
+	.8byte 0x800d1c380e0c1022
+	.8byte 0xffff900d1affffff
+	.8byte 0x0d1c380e0d1022ff
+	.8byte 0xff980d1affffff80
+	.8byte 0x1c380e0e1022ffff
+	.8byte 0xa00d1affffff800d
+	.8byte 0x380e0f1022ffffff
+	.8byte 0x0d1affffff800d1c
+	.4byte 0xffffffa8
 	.2byte 0x0422
-	.4byte ..___tag_value_main.15-..___tag_value_main.12
+	.4byte ..___tag_value_main.15-..___tag_value_main.8
 	.2byte 0x04cc
 	.4byte ..___tag_value_main.16-..___tag_value_main.15
 	.2byte 0x04cd
@@ -480,10 +465,8 @@ add_internal:
 	.2byte 0x0422
 	.4byte ..___tag_value_main.31-..___tag_value_main.20
 	.8byte 0x00000000c608070c
-	.2byte 0x0000
-	.byte 0x00
 	.4byte 0x00000014
-	.4byte 0x0000012c
+	.4byte 0x00000124
 	.8byte ..___tag_value_add_internal.34
 	.8byte ..___tag_value_add_internal.36-..___tag_value_add_internal.34
 # End

@@ -1769,7 +1769,19 @@ int main(int argc, char *argv[]){
 
     for (i=0; i<1000000; i++) {
         for(x=0; x<2; x++){
-            ee[i][x] = add_external(aa[i][x]*2, bb[i][x]/3);
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            ee[i][x] = add_external(aa[i][x], bb[i][x]);
         }
     }
 
