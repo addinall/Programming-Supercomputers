@@ -31,7 +31,10 @@ Some of the areas covered will include:
 - Issues with Cluster systems
 - The future of HPC and parallel programming
 
+
 The Lab work will mainly be based on code you will write, compile and configure using the C and C++ programming languages on the supercomputer accounts provided.
+
+
 ----
 
 #Exam Week
